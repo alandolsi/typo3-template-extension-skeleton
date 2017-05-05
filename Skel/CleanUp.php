@@ -37,11 +37,9 @@ class CleanUp
 
         unlink($rootDir . '/Resources/Private/Fluid/GridElements/Templates/.gitignore');
 
-        unlink($rootDir . '/Resources/Private/Fluid/Pages/Layouts/.gitignore');
         unlink($rootDir . '/Resources/Private/Fluid/Pages/Partials/.gitignore');
-        unlink($rootDir . '/Resources/Private/Fluid/Pages/Templates/.gitignore');
 
-
+        // Remove GitHub README
         unlink($rootDir . '/README.md');
 
         // Finally delete the current script
