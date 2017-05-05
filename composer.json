@@ -16,7 +16,8 @@
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "BIT\\Template\\": "Classes"
+      "BIT\\Template\\": "Classes",
+      "BIT\\Skel\\": "Skel"
     }
   },
   "replace": {
@@ -24,5 +25,10 @@
     "typo3-ter/template": "self.version"
   },
   "require": {
+  },
+  "scripts": {
+    "post-create-project-cmd": [
+      "BIT\\Skel\\CleanUp::postCreateProjectCmd"
+    ]
   }
 }
