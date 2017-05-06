@@ -5,7 +5,7 @@
  ***************************************************************/
 
 $EM_CONF[$_EXTKEY] = [
-    'title'            => 'TYPO3 Template',
+    'title'            => 'Bessei-IT TYPO3 Template',
     'description'      => 'Template extension for TYPO3',
     'category'         => 'misc',
     'version'          => '1.0',
