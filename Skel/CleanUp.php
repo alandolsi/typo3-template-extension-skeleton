@@ -16,11 +16,11 @@ class CleanUp
     }
 
     /**
-     * Delete unused files:<br>
-     * - .gitignore which were needed to preserve empty directories<br>
-     * - README.md
-     * - The current script and the Skel/ directory
-     * <br>
+     * Delete unused files:
+     * * .gitignore files which were needed to preserve empty directories
+     * * README.md
+     * * The current script and the Skel/ directory
+     * <br><br>
      * For security reasons we do not use `rm -R`, but delete all files explicitly
      * @param string $rootDir
      */
