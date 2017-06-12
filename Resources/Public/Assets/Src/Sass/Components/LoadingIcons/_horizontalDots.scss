@@ -1,0 +1,35 @@
+// http://tobiasahlin.com/spinkit/
+@mixin bit-loading-icon-horizontal-dots($size) {
+  .bit-loading-icon-horizontal-dots {
+    width: $size;
+    text-align: center;
+  }
+
+  .bit-loading-icon-horizontal-dots > div {
+    // Divide by 4 to leave some space between dots
+    width: $size / 4;
+    height: $size / 4;
+    background-color: #333;
+
+    border-radius: 100%;
+    display: inline-block;
+    animation: bit-loading-icon-horizontal-dots-animation 1.4s infinite ease-in-out both;
+  }
+
+  .bit-loading-icon-horizontal-dots .bounce1 {
+    animation-delay: -0.32s;
+  }
+
+  .bit-loading-icon-horizontal-dots .bounce2 {
+    animation-delay: -0.16s;
+  }
+
+  @keyframes bit-loading-icon-horizontal-dots-animation {
+    0%, 80%, 100% {
+      transform: scale(0);
+    }
+    40% {
+      transform: scale(1.0);
+    }
+  }
+}

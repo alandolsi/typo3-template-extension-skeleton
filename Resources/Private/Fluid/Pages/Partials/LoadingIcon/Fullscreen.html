@@ -1,0 +1,13 @@
+<html data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+<div class="bit-fullscreen-loader" style="{f:if(condition:'{showOnLoad}',then:'',else:'display:none;')}">
+    <f:if condition="{loadingIcon}">
+        <f:then>
+            <f:render partial="LoadingIcon/{loadingIcon}" arguments="{showOnLoad:'1'}"/>
+        </f:then>
+        <f:else>
+            <f:comment>Use squares loading icon as default</f:comment>
+            <f:render partial="LoadingIcon/Squares" arguments="{showOnLoad:'1'}"/>
+        </f:else>
+    </f:if>
+</div>
+</html>
