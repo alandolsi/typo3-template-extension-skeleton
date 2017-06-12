@@ -1,0 +1,136 @@
+@mixin simpleDropdownNavigationMobile($backgroundColor,$backgroundColorHover,$borderColor,$toggleIconColor,$toggleIconHoverColor) {
+  // Position toggle icon on right edge
+  text-align: right;
+
+  .bit-navigation {
+    // Fill viewport
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: $backgroundColor;
+
+    // Allow scrolling
+    overflow: auto;
+
+    // Spacing to close icon
+    margin-top: 2rem;
+
+    // Below icon
+    z-index: 5;
+
+    // Hide (-100% - margin-top)
+    transform: translate3D(0, calc(-100% - 2rem), 0);
+    pointer-events: none;
+
+    // Animate, slide down
+    transition: transform 0.8s;
+  }
+
+  // Style items
+  .bit-navigation-item {
+    position: relative;
+    display: block;
+    width: 100%;
+    text-align: left;
+
+    .bit-navigation-subitem-label {
+      display: block;
+    }
+
+    a {
+      display: block;
+      padding: 1rem 1rem;
+      width: 100%;
+    }
+
+    .bit-navigation-subitem-label,
+    & > a {
+      background-color: $backgroundColor;
+    }
+
+    // Pointer events are disabled for links with subitems.
+    // Use hover on li element
+    .bit-navigation-subitem-label:hover,
+    &:hover > a {
+      background-color: $backgroundColorHover;
+    }
+
+    .bit-navigation-arrow {
+      position: absolute;
+      // Align with close icon
+      right: 1.1rem;
+      top: 50%;
+      transform: translateY(-50%) rotate(0);
+      transform-origin: 50% 50%;
+    }
+  }
+
+  // Position drop down icon relative to parent
+  .bit-navigation-subitem-label {
+    position: relative;
+    // Position in front of .bit-navigation-sub-navigation-wrapper
+    z-index: 30;
+    background-color: $backgroundColor;
+  }
+
+  // Disable link for items which have subitems
+  .bit-navigation-subitem-label a {
+    pointer-events: none;
+  }
+
+  // Subitems
+  .bit-navigation-sub-navigation-wrapper {
+    // Position behind .bit-navigation-subitem-label
+    z-index: 5;
+
+    // Hide
+    height: 0;
+    overflow: hidden;
+
+    // Intend subitems
+    .bit-navigation-link {
+      padding-left: 3rem;
+    }
+  }
+
+  .bit-navigation-checkbox:checked {
+    & ~ .bit-navigation-subitem-label {
+      .bit-navigation-arrow {
+        transform: translateY(-50%) rotate(180deg);
+      }
+    }
+
+    & ~ .bit-navigation-sub-navigation-wrapper {
+      height: auto;
+    }
+  }
+
+  .bit-toggle-icon-wrapper {
+    display: inline-block;
+    position: relative;
+    width: 3rem;
+    height: 100%;
+    border-right: 1rem solid transparent;
+    border-left: 1rem solid transparent;
+    cursor: pointer;
+    // Show above menu items
+    z-index: 10;
+
+    @include toggle-icon(1rem, 2px, $toggleIconColor, $toggleIconHoverColor);
+  }
+
+  .bit-navigation-checkbox:checked {
+    // Show close icon
+    & + .bit-toggle-icon-wrapper {
+      @include toggle-icon-closed();
+    }
+
+    // Show navigation
+    & ~ .bit-navigation {
+      pointer-events: auto;
+      transform: translate3D(0, 0, 0);
+    }
+  }
+}

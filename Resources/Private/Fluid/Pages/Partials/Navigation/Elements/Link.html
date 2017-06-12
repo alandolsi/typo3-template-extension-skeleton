@@ -1,0 +1,27 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:if condition="{item.data.target}">
+    <f:then>
+        <a href="{item.link}" class="bit-navigation-link" target="{item.data.target}" title="{item.data.title}">
+            <span class="bit-navigation-item-text">{item.title}
+            <f:if condition="{item.children}"><f:render section="dropdownIcon"/></f:if></span>
+        </a>
+    </f:then>
+    <f:else if="{item.target}">
+        <a href="{item.link}" class="bit-navigation-link" target="{item.target}" title="{item.data.title}">
+            <span class="bit-navigation-item-text">{item.title}
+            <f:if condition="{item.children}"><f:render section="dropdownIcon"/></f:if></span>
+        </a>
+    </f:else>
+    <f:else>
+        <a href="{item.link}" class="bit-navigation-link" title="{item.data.title}">
+            <span class="bit-navigation-item-text">{item.title}
+                <f:if condition="{item.children}"><f:render section="dropdownIcon"/></f:if></span>
+        </a>
+    </f:else>
+</f:if>
+
+<f:section name="dropdownIcon">
+    <f:image class="bit-navigation-arrow"
+             src="EXT:template/Resources/Public/Assets/Dist/Images/Material/keyboard_arrow_down_square.svg"/>
+</f:section>
+</html>

@@ -1,0 +1,67 @@
+<html data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:bu="http://typo3.org/ns/BIT/Utility/ViewHelpers">
+<f:render section="mainMenu" arguments="{mainMenuItems:mainMenuItems,itemCount:itemCount}"/>
+
+<f:section name="mainMenu">
+    <div class="bit-navigation-wrapper">
+        <f:render section="mobileButton"/>
+        <ul class="bit-navigation bit-horizontal-navigation">
+            <f:for each="{mainMenuItems}" as="item">
+                <li class="{f:render(section: 'itemClasses',arguments: {item:item})} bit-navigation-item bit-navigation-main-item">
+                    <f:if condition="{item.children}">
+                        <f:then>
+                            <f:alias map="{id: '{bu:uniqueId()}'}">
+                                <f:comment>Checkbox and label for mobile version</f:comment>
+                                <input type="checkbox" class="bit-navigation-checkbox"
+                                       id="bit-navigation-checkbox-{id}"/>
+                                <label for="bit-navigation-checkbox-{id}"
+                                       class="bit-navigation-subitem-label">
+                                    <f:render partial="Navigation/Elements/Link" arguments="{item: item}"/>
+                                </label>
+                            </f:alias>
+                        </f:then>
+                        <f:else>
+                            <f:render partial="Navigation/Elements/Link" arguments="{item: item}"/>
+                        </f:else>
+                    </f:if>
+                    <f:if condition="{item.children}">
+                        <f:render section="submenu" arguments="{submenu: item.children}"/>
+                    </f:if>
+                </li>
+            </f:for>
+        </ul>
+    </div>
+</f:section>
+
+<f:section name="submenu">
+    <div class="bit-navigation-sub-navigation-wrapper {class}">
+        <ul class="bit-navigation-sub-navigation">
+            <f:for each="{submenu}" as="subItem">
+                <li class="{f:render(section: 'itemClasses',arguments: '{item:subItem}')} bit-navigation-item bit-navigation-sub-item">
+                    <f:render partial="Navigation/Elements/Link" arguments="{item: subItem}"/>
+                    <f:if condition="{subItem.children}">
+                        <f:render section="submenu" arguments="{submenu: subItem.children}"/>
+                    </f:if>
+                </li>
+            </f:for>
+        </ul>
+    </div>
+</f:section>
+
+<f:section name="itemClasses">
+    <f:if condition="{item.spacer}">spacer</f:if>
+    <f:if condition="{item.current}">current</f:if>
+    <f:if condition="{item.active}">active</f:if>
+    <f:if condition="{item.children}">has-children</f:if>
+</f:section>
+
+<f:section name="mobileButton">
+
+    <f:alias map="{id: '{bu:uniqueId()}'}">
+        <input type="checkbox" class="bit-navigation-checkbox" id="bit-navigation-checkbox-{id}"/>
+        <label class="bit-toggle-icon-wrapper" for="bit-navigation-checkbox-{id}">
+            <div class="toggle-icon"></div>
+        </label>
+    </f:alias>
+</f:section>
+</html>

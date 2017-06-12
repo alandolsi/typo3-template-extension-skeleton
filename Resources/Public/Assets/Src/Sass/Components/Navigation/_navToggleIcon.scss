@@ -1,0 +1,52 @@
+@mixin toggle-icon($size,$line-strength,$line-color,$line-color-hover) {
+  .toggle-icon, .toggle-icon:before, .toggle-icon:after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: $line-strength;
+    width: $size;
+    cursor: pointer;
+    background: $line-color;
+    display: block;
+    content: '';
+    transition: transform 500ms, background 300ms;
+  }
+
+  .toggle-icon {
+    margin-left: -($size/2);
+    transform: translate3d(0, -50%, 0) rotate(0deg);
+  }
+  .toggle-icon:before {
+    margin-left: -($size/2);
+    transform: translate3d(0, -300%, 0) rotate(0deg);
+  }
+  .toggle-icon:after {
+    margin-left: -($size/2);
+    // Firefox shows the :after bar too small, add scale3D as fix
+    transform: translate3d(0, 200%, 0) rotate(0deg);
+  }
+
+  &:hover {
+    cursor: pointer;
+    .toggle-icon, .toggle-icon:after, .toggle-icon:before {
+      background: $line-color-hover;
+    }
+  }
+}
+
+@mixin toggle-icon-closed() {
+  .toggle-icon {
+    background: transparent !important;
+    transform: rotateY(0.01deg);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  .toggle-icon:before {
+    visibility: visible;
+    transform: rotate(-45deg);
+  }
+  .toggle-icon:after {
+    visibility: visible;
+    transform: rotate(45deg);
+  }
+}

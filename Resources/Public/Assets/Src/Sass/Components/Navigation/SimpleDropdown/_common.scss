@@ -1,0 +1,16 @@
+@mixin simpleDropdownNavigationCommon($backgroundColor) {
+  background-color: $backgroundColor;
+
+  // Hide toggle checkbox
+  .bit-navigation-checkbox {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: -9999px;
+  }
+
+  // Hide toggle icon by default
+  .bit-toggle-icon-wrapper {
+    display: none;
+  }
+}

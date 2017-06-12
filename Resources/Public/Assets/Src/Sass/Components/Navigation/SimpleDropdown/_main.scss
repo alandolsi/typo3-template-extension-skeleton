@@ -1,0 +1,20 @@
+@import "../navToggleIcon";
+@import "common";
+@import "desktop";
+@import "mobile";
+
+@mixin simpleDropdownNavigation($backgroundColor,$backgroundColorHover,$borderColor,$toggleIconColor,$toggleIconHoverColor,$breakPoint) {
+  .bit-navigation-wrapper {
+
+    @include simpleDropdownNavigationCommon($backgroundColor);
+
+    @media(min-width: ($breakPoint + 1)) {
+      @include simpleDropdownNavigationDesktop($backgroundColor, $borderColor);
+    }
+
+    @media (max-width: $breakPoint) {
+      @include simpleDropdownNavigationMobile($backgroundColor, $backgroundColorHover, $borderColor, $toggleIconColor, $toggleIconHoverColor);
+    }
+
+  }
+}
