@@ -13,15 +13,15 @@ page {
     meta < lib.metaTags
 
     includeCSS {
-        header = EXT:template/Resources/Public/Assets/Dist/Css/header.css
+        templateHeader = EXT:template/Resources/Public/Assets/Dist/Css/header.css
     }
 
     includeJS {
-        header = EXT:template/Resources/Public/Assets/Dist/JavaScript/header.js
+        templateHeader = EXT:template/Resources/Public/Assets/Dist/JavaScript/header.js
     }
 
     includeJSFooter {
-        footer = EXT:template/Resources/Public/Assets/Dist/JavaScript/footer.js
+        templateFooter = EXT:template/Resources/Public/Assets/Dist/JavaScript/footer.js
     }
 
     10 = FLUIDTEMPLATE
