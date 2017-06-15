@@ -19,15 +19,15 @@ TCEFORM.tt_content {
     # ENABLE subheader
     subheader.disabled = 0
 
+    # Show only Default
     layout {
-        keepItems = 0,1,2
+        keepItems = 0
         altLabels {
-            2 = Balken mit Überschrift und Icon
-            1 = Große Überschrift mit Text und Icon
-            0 = Standard
+            0 = Default
         }
     }
 
+    # Show only Default and Hidden
     header_layout {
         keepItems = 1,100
         altLabels {
